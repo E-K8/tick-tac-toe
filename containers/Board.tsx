@@ -1,8 +1,32 @@
 import { useState } from "react";
+import Square from "../components/Square"
 
 function Board() {
+  // creating an array with 9 elements (squares on the board)
   const [squares, setSquares] = useState(Array(9).fill(null));
-  return <div>This is the board</div>;
-}
+  const [currentPlayer, setCurrentPlayer] = useState<"❌" | "🟢">(
+    // creating a random value between ❌ and 🟢
+    Math.round(Math.random() * 1) === 1 ? "❌" : "🟢"
+  );
+
+  // set winner
+  const [winner, setWinner] = useState(null);
+
+  return (
+    <div>
+      <p>Hey {currentPlayer}, your turn now!</p>
+
+      {/* display all squares ↓ */}
+      {Array(9)
+        .fill(null)
+        .map((_, i) => {
+          return <Square key = {i} onClick = {() =>} 
+        value= {squares[i]}
+        />                      }
+        })}
+// generally setting the i like this is not advised because if it changes we'll have to rerender the square or the entire array, but in this case i isn't going to change
+    </div>
+  );
+      }
 
 export default Board;
