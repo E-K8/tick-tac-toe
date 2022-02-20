@@ -6,12 +6,17 @@ function Square({
 }: {
   winner: Player;
   value: Player;
+  // void ↓ means that the function doesn't return anything
   onClick: () => void;
 }) {
   if (!value) {
-    return <button disabled={Boolean(winner)} />;
+    return <button className="square" disabled={Boolean(winner)} />;
   }
-  return <button>This is a square</button>;
+  return (
+    <button className={`square square_${value.toLocaleLowerCase}`} disabled>
+      {value}
+    </button>
+  );
 }
 
 export default Square;
